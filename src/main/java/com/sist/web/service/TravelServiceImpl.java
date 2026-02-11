@@ -31,7 +31,7 @@ public class TravelServiceImpl implements TravelService{
 	}
 	// 제주 명소
 	@Override
-	public List<AttractionDTO> jejuAttratcionData(int start) {
+	public List<CommonsDTO> jejuAttratcionData(int start) {
 		// TODO Auto-generated method stub
 		return jrepo.jejuAttratcionData(start);
 	}

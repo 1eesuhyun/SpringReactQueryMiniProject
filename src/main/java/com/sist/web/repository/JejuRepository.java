@@ -21,7 +21,7 @@ public interface JejuRepository extends JpaRepository<JejuTravel, Integer>{
 			+ "ON j.contentid = a.contentid "
 			+ "ORDER BY contentid ASC "
 			+ "OFFSET :start ROWS FETCH NEXT 12 ROWS ONLY",nativeQuery = true)
-	public List<AttractionDTO> jejuAttratcionData(@Param("start") int start);
+	public List<CommonsDTO> jejuAttratcionData(@Param("start") int start);
 	// 명소 총 페이지?
 	@Query(value = "SELECT CEIL (COUNT(*)/12.0) FROM jejutravel "
 			+ "WHERE contenttype =:contenttype",nativeQuery = true)

@@ -20,7 +20,7 @@ public class JejuRestController {
 		Map map=new HashMap();
 		try
 		{
-			List<AttractionDTO> list=service.jejuAttratcionData((page-1)*12);
+			List<CommonsDTO> list=service.jejuAttratcionData((page-1)*12);
 			int totalpage=service.jejuTotalPage(12);
 			
 			final int BLOCK=10;
