@@ -16,6 +16,8 @@ public interface TravelService {
 	
 	// 제주 명소
 	public List<CommonsDTO> jejuAttratcionData(int start);
-	// 명소 총 페이지?
+	// 제주 명소 총 페이지
 	public int jejuTotalPage(int contenttype);
+	// 제주 명소 상세보기
+	public AttractionDTO jejuAttratcionDetail(int contentid);
 }

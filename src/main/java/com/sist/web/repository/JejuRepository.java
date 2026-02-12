@@ -26,4 +26,13 @@ public interface JejuRepository extends JpaRepository<JejuTravel, Integer>{
 	@Query(value = "SELECT CEIL (COUNT(*)/12.0) FROM jejutravel "
 			+ "WHERE contenttype =:contenttype",nativeQuery = true)
 	public int jejuTotalPage(@Param("contenttype") int contenttype);
+	
+	// 명소 상세보기
+	@Query(value = "SELECT j.contentid, title, address, image1, hit, j.contenttype, x, y, "
+			+ "infocenter, restdate, usetime, parking, CAST(DBMS_LOB.SUBSTR(msg, 4000, 1) AS VARCHAR2(4000)) AS msg "
+			+ "FROM jejutravel j "
+			+ "JOIN attraction a "
+			+ "ON j.contentid = a.contentid "
+			+ "AND j.contentid =:contentid",nativeQuery = true)
+	public AttractionDTO jejuAttratcionDetail(@Param("contentid") int contentid);
 }

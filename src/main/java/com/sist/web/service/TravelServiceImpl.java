@@ -41,4 +41,10 @@ public class TravelServiceImpl implements TravelService{
 		// TODO Auto-generated method stub
 		return jrepo.jejuTotalPage(contenttype);
 	}
+	// 제주 명소 상세페이지
+	@Override
+	public AttractionDTO jejuAttratcionDetail(int contentid) {
+		// TODO Auto-generated method stub
+		return jrepo.jejuAttratcionDetail(contentid);
+	}
 }

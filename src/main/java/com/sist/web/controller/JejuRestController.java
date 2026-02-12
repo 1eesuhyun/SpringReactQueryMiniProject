@@ -14,6 +14,7 @@ import com.sist.web.entity.*;
 public class JejuRestController {
 	private final TravelService service;
 	
+	// 제주 명소 리스트
 	@GetMapping("/jeju/attraction_react/{page}")
 	public ResponseEntity<Map> jeju_attraction(@PathVariable("page") int page)
 	{
@@ -34,6 +35,23 @@ public class JejuRestController {
 			map.put("startPage", startPage);
 			map.put("endPage", endPage);
 			map.put("curpage", page);
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
+			return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<>(map,HttpStatus.OK);
+	}
+	// 제주 명소 상세페이지
+	@GetMapping("/jeju/attratcion_detail/{contentid}")
+	public ResponseEntity<Map> jeju_attraction_detail(@PathVariable("contentid") int contentid)
+	{
+		Map map=new HashMap();
+		try
+		{
+			AttractionDTO dto=service.jejuAttratcionDetail(contentid);
+			
+			map.put("dto", dto);
 		}catch(Exception ex)
 		{
 			ex.printStackTrace();
