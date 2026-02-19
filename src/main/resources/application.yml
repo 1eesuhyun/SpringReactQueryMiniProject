@@ -1,16 +1,38 @@
+#port => default 8080 => 보안 설정(AWS) : port 허용
+# 8080 / 1521 / 3306 (MySql , MariaDB)
+# MVC 설정
+server:
+    port: 8080
+    servlet:
+      context-path: /
+
 spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
   datasource:
-    url: jdbc:oracle:thin:@211.238.142.22:1521:xe
-    username: hr
-    password: happy
-    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:mysql://localhost:3306/mydb?serverTimezone=UTC
+    username: root
+    password: asd123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  ai:
+    google:
+      genai:
+        api-key: 
+
+  
   jpa:
-    database: oracle
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQLDialect
+
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.OracleDialect
+        dialect: org.hibernate.dialect.MySQLDialect
         format_sql: true
-        user_sql_comments: true
+        use_sql_comments: true
+
   thymeleaf:
     cache: false
     encoding: utf-8
@@ -19,6 +41,6 @@ spring:
     mode: HTML
 
 logging:
-  level: 
-    org.hibernate.SQL: DEBUG
-    org.hibernate.orm.jdbc.bind: TRACE 
+    level:
+      org.hibernate.SQL: DEBUG
+      org.hibernate.orm.jdbc.bind: TRACE
